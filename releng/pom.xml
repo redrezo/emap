@@ -55,10 +55,15 @@
 	</modules>
 
 	<repositories>
-		<repository>
+		<!--repository>
 			<id>mars</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/mars</url>
+		</repository-->
+		<repository>
+			<id>mars-201602261000</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/mars/201602261000/</url>
 		</repository>
 		<!--repository>
 			<id>xtext</id>
