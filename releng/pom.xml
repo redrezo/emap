@@ -175,11 +175,11 @@
 					<configuration>
 						<encoding>UTF-8</encoding>
 						<extraClasspathElements>
-							<extraClasspathElement>
+							<!--extraClasspathElement>
 								<groupId>com.oracle.jdbc</groupId>
 								<artifactId>ojdbc14</artifactId>
 								<version>10.2.0.1</version>
-							</extraClasspathElement>
+							</extraClasspathElement-->
 
 				            <!--extraClasspathElement>
 				                <groupId>com.oracle</groupId>
@@ -240,7 +240,25 @@
 				<module>../at.bestsolution.emap.oracle.dummy</module>
 				<module>../at.bestsolution.persistence.runtime.oracle.feature</module>
 			</modules>
-
+			<build>
+				<pluginManagement>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-compiler-plugin</artifactId>
+						<version>${tycho-version}</version>
+						<configuration>
+							<!-- TODO fix me -->
+							<extraClasspathElements>
+								<extraClasspathElement>
+									<groupId>com.oracle.jdbc</groupId>
+									<artifactId>ojdbc14</artifactId>
+									<version>10.2.0.1</version>
+								</extraClasspathElement>
+							</extraClasspathElements>
+						</configuration>
+					</plugin>
+				</pluginManagement>
+			</build>
 		</profile>
 		<profile>
       <id>build-server</id>
