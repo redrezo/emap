@@ -238,6 +238,7 @@
 			<modules>
 				<module>../at.bestsolution.persistence.java.c3p0.oracle.blob</module>
 				<module>../at.bestsolution.emap.oracle.dummy</module>
+				<module>../at.bestsolution.persistence.runtime.oracle.feature</module>
 			</modules>
 
 		</profile>
