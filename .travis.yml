@@ -3,3 +3,4 @@ cache:
   directories:
   - $HOME/.m2
 script: cd releng && mvn test
+
