@@ -75,11 +75,11 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0/</url>
 		</repository>
-		<repository>
+		<!--repository>
 			<id>emf-2.10.x</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/modeling/emf/emf/updates/2.10.x/</url>
-		</repository>
+		</repository-->
 		<repository>
 			<id>maven.oracle.com</id>
 			<releases>
