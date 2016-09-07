@@ -242,6 +242,7 @@
 			</modules>
 			<build>
 				<pluginManagement>
+					<plugins>
 					<plugin>
 						<groupId>org.eclipse.tycho</groupId>
 						<artifactId>tycho-compiler-plugin</artifactId>
@@ -257,6 +258,7 @@
 							</extraClasspathElements>
 						</configuration>
 					</plugin>
+					</plugins>
 				</pluginManagement>
 			</build>
 		</profile>
