@@ -22,7 +22,7 @@ env:
     - EMAP_DB_FIREBIRD_USER=SYSDBA
     - EMAP_DB_FIREBIRD_PASSWORD=masterkey
     - EMAP_DB_FIREBIRD_DRIVER=org.firebirdsql.jdbc.FBDriver
-    - EMAP_DB_FIREBIRD_URL=jdbc:firebirdsql://localhost//tmp/emap_test.fdb?encoding=UTF8
+    - EMAP_DB_FIREBIRD_URL=jdbc:firebirdsql:/tmp/emap_test.fdb?encoding=UTF8
     - EMAP_DB_FIREBIRD_NAME=Firebird
 language: java
 cache:
