@@ -19,8 +19,8 @@ env:
     - EMAP_DB_POSTGRES_URL=jdbc:postgresql:emap_test
     - EMAP_DB_POSTGRES_NAME=Postgres
     - EMAP_DB_POSTGRES_DRIVER=org.postgresql.Driver
-    - EMAP_DB_FIREBIRD_USER=TODO
-    - EMAP_DB_FIREBIRD_PASSWORD=
+    - EMAP_DB_FIREBIRD_USER=SYSDBA
+    - EMAP_DB_FIREBIRD_PASSWORD=masterkey
     - EMAP_DB_FIREBIRD_DRIVER=org.firebirdsql.jdbc.FBDriver
     - EMAP_DB_FIREBIRD_URL=jdbc:firebirdsql://localhost//tmp/emap_test.fdb?encoding=UTF8
     - EMAP_DB_FIREBIRD_NAME=Firebird
