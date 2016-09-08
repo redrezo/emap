@@ -9,7 +9,7 @@ services:
 before_script:
   - psql -c 'create database emap_test;' -U postgres
   - isql-fb -z -q -i /dev/null # --version
-  - echo 'CREATE DATABASE "localhost:/tmp/emap_test.fdb" PAGE_SIZE = 16384;' > /tmp/create_fdb.sql
+  - echo 'CREATE DATABASE /tmp/emap_test.fdb page_size 8192;' > /tmp/create_fdb.sql
   - isql-fb -u SYSDBA -p masterkey -i /tmp/create_fdb.sql -q 
 env:
   global:
