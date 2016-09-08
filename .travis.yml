@@ -15,13 +15,13 @@ before_script:
 env:
   global:
     - EMAP_DBS="POSTGRES,FIREBIRD"
-    - EMAP_DB_POSTGRES_USER=postgres
+    - EMAP_DB_POSTGRES_USERNAME=postgres
     - EMAP_DB_POSTGRES_PASSWORD=
     - EMAP_DB_POSTGRES_URL=jdbc:postgresql:emap_test
     - EMAP_DB_POSTGRES_NAME=Postgres
     - EMAP_DB_POSTGRES_DRIVER=org.postgresql.Driver
-    - EMAP_DB_FIREBIRD_USER=emap
-    - EMAP_DB_FIREBIRD_PASSWORD=emap
+    - EMAP_DB_FIREBIRD_USERNAME=SYSDBA
+    - EMAP_DB_FIREBIRD_PASSWORD=masterkey
     - EMAP_DB_FIREBIRD_DRIVER=org.firebirdsql.jdbc.FBDriver
     - EMAP_DB_FIREBIRD_URL=jdbc:firebirdsql:/tmp/emap_test.fdb?encoding=UTF8
     - EMAP_DB_FIREBIRD_NAME=Firebird
