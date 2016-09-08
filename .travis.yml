@@ -3,8 +3,14 @@ services:
 before_script:
   - psql -c 'create database emap_test;' -U postgres
 env:
-  - EMAP_DBS=POSTGRES EMAP_DB_POSTGRES_USER=postgres EMAP_DB_POSTGRES_PASSWORD= EMAP_DB_POSTGRES_URL=jdbc:postgresql:emap_test EMAP_DB_POSTGRES_NAME=Postgres
-  - EMAP_DBS=FIREBIRD EMAP_DB_FIREBIRD_USER=TODO
+  global:
+    - EMAP_DBS="POSTGRES,FIREBIRD"
+    - EMAP_DB_POSTGRES_USER=postgres
+    - EMAP_DB_POSTGRES_PASSWORD=
+    - EMAP_DB_POSTGRES_URL=jdbc:postgresql:emap_test
+    - EMAP_DB_POSTGRES_NAME=Postgres
+    - EMAP_DB_FIREBIRD_USER=TODO
+    - EMAP_DB_FIREBIRD_PASSWORD=
 language: java
 cache:
   directories:
