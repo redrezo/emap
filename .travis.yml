@@ -12,5 +12,5 @@ language: java
 cache:
   directories:
   - $HOME/.m2
-script: cd releng && mvn package
+script: cd releng && mvn verify
 
