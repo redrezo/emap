@@ -37,6 +37,11 @@
 								<id>at.bestsolution.persistence.java.c3p0.fb</id>
 								<versionRange>1.0.0</versionRange>
 							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>at.bestsolution.persistence.java.c3p0.postgres</id>
+								<versionRange>1.0.0</versionRange>
+							</requirement>
 						</extraRequirements>
 					</dependency-resolution>
 				</configuration>

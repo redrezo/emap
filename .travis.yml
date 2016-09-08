@@ -9,8 +9,10 @@ env:
     - EMAP_DB_POSTGRES_PASSWORD=
     - EMAP_DB_POSTGRES_URL=jdbc:postgresql:emap_test
     - EMAP_DB_POSTGRES_NAME=Postgres
+    - EMAP_DB_POSTGRES_DRIVER=org.postgresql.Driver
     - EMAP_DB_FIREBIRD_USER=TODO
     - EMAP_DB_FIREBIRD_PASSWORD=
+    - EMAP_DB_FIREBIRD_DRIVER=org.firebirdsql.jdbc.Driver
 language: java
 cache:
   directories:
