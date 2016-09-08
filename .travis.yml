@@ -12,7 +12,7 @@ env:
     - EMAP_DB_POSTGRES_DRIVER=org.postgresql.Driver
     - EMAP_DB_FIREBIRD_USER=TODO
     - EMAP_DB_FIREBIRD_PASSWORD=
-    - EMAP_DB_FIREBIRD_DRIVER=org.firebirdsql.jdbc.Driver
+    - EMAP_DB_FIREBIRD_DRIVER=org.firebirdsql.jdbc.FBDriver
 language: java
 cache:
   directories:
