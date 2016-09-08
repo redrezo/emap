@@ -41,7 +41,10 @@ import at.bestsolution.persistence.SessionFactory;
 import at.bestsolution.persistence.java.JavaSession;
 import test.model.emap.test.AddressMapper;
 import test.model.emap.test.PersonMapper;
+import test.model.emap.test.PlaceMapper;
+import test.model.test.Address;
 import test.model.test.Person;
+import test.model.test.Place;
 import test.model.test.TestFactory;
 
 @RunWith(Parameterized.class)
@@ -52,7 +55,7 @@ public class TestCase {
 	
 	@Parameters(name = "Database: {0}")
 	public static Collection<String> database() {
-		return Arrays.asList("FIREBIRD", "POSTGRES");
+		return Arrays.asList(System.getenv("EMAP_DBS").split(","));
 	}
 	
 	@Parameter
@@ -74,6 +77,7 @@ public class TestCase {
 	public void before() {
 		System.err.println("Setting up database " + database);
 		session = getSessionFactory().createSession(database);
+		
 		testConnection = ((JavaSession)session).checkoutConnection();
 		try {
 			dbUnitConn = new DatabaseConnection(testConnection);
@@ -193,6 +197,102 @@ public class TestCase {
 		});
 		
 		Assertion.assertEquals(getXmlDataSet("emptyDB.xml"), getDBDataSet());
+	}
+	
+	@Test
+	public void insertOneToMany() throws Exception {
+		DatabaseOperation.CLEAN_INSERT.execute(getConnection(), getXmlDataSet("onlyHeinzi.xml"));
+		
+		PersonMapper m = session.createMapper(PersonMapper.class);
+		final Person person0 = m.selectById(1);
+		
+		final Address addr0 = TestFactory.eINSTANCE.createAddress();
+		addr0.setStreet("Street Zero");
+		addr0.setPerson(person0);
+		
+		final Address addr1 = TestFactory.eINSTANCE.createAddress();
+		addr1.setStreet("Street One");
+		addr1.setPerson(person0);
+		
+		session.runInTransaction(new Session.TransactionTask() {
+			@Override
+			public boolean run(Session s) {
+				session.persist(addr0, addr1);
+				return true;
+			}
+		});
+		
+		Assertion.assertEquals(getXmlDataSet("heinziWith2Addr.xml"), getDBDataSet());
+	}
+	
+	@Test
+	public void deleteOnToMany() throws Exception {
+		DatabaseOperation.CLEAN_INSERT.execute(getConnection(), getXmlDataSet("heinziWith2Addr.xml"));
+		
+		PersonMapper personMapper = session.createMapper(PersonMapper.class);
+		Person heinzi = personMapper.selectById(1);
+		final Address addr0 = heinzi.getAddresses().get(0);
+		
+		session.runInTransaction(new Session.TransactionTask() {
+			@Override
+			public boolean run(Session s) {
+				session.delete(addr0);
+				return true;
+			}
+		});
+		
+		Assertion.assertEquals(getXmlDataSet("heinziWith1Addr.xml"), getDBDataSet());
+	}
+	
+	@Test
+	public void insertManyToMany() throws Exception {
+		DatabaseOperation.CLEAN_INSERT.execute(getConnection(), getXmlDataSet("2Person2Places.xml"));
+		
+		PersonMapper personMapper = session.createMapper(PersonMapper.class);
+		final Person heinzi = personMapper.selectById(1);
+		final Person sarah = personMapper.selectById(2);
+		
+		PlaceMapper placeMapper = session.createMapper(PlaceMapper.class);
+		final Place magicalForest = placeMapper.selectById(1);
+		final Place wonderland = placeMapper.selectById(2);
+		
+		heinzi.getLikes().add(wonderland);
+		
+		sarah.getLikes().add(magicalForest);
+		sarah.getLikes().add(wonderland);
+		
+		session.runInTransaction(new Session.TransactionTask() {
+			@Override
+			public boolean run(Session s) {
+				session.persist(heinzi, sarah, magicalForest, wonderland);
+				return true;
+			}
+		});
+		
+		Assertion.assertEquals(getXmlDataSet("2Person2Places3Likes.xml"), getDBDataSet());
+	}
+	
+	@Test
+	public void deleteManyToMany() throws Exception {
+		DatabaseOperation.CLEAN_INSERT.execute(getConnection(), getXmlDataSet("2Person2Places3Likes.xml"));
+		
+		PersonMapper personMapper = session.createMapper(PersonMapper.class);
+		final Person sarah = personMapper.selectById(2);
+		
+		PlaceMapper placeMapper = session.createMapper(PlaceMapper.class);
+		final Place wonderland = placeMapper.selectById(2);
+		
+		wonderland.getLikedBy().remove(sarah);
+		
+		session.runInTransaction(new Session.TransactionTask() {
+			@Override
+			public boolean run(Session s) {
+				session.persist(sarah, wonderland);
+				return true;
+			}
+		});
+		
+		Assertion.assertEquals(getXmlDataSet("2Person2Places2Likes.xml"), getDBDataSet());
 	}
 	
 }
