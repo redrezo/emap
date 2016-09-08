@@ -29,7 +29,7 @@ language: java
 cache:
   directories:
   - $HOME/.m2
-script: cd releng && mvn verify
+script: cd releng && mvn --offline verify
 after_failure:
   - cat ../test/test.junit/target/surefire-reports/*.txt
 
