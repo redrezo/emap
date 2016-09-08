@@ -48,10 +48,8 @@
 		<module>../at.bestsolution.persistence.runtime.updatesite</module>
 
 		<!-- Tooling -->
-		<module>../at.bestsolution.persistence.emap</module>
-		<module>../at.bestsolution.persistence.emap.ui</module>
-		<module>../at.bestsolution.persistence.tooling.feature</module>
-		<module>../at.bestsolution.persistence.tooling.updatesite</module>
+
+		<module>../test</module>
 	</modules>
 
 	<repositories>
@@ -248,6 +246,15 @@
 		</pluginManagement>
 	</build>
 	<profiles>
+		<profile>
+			<id>tooling</id>
+			<modules>
+				<module>../at.bestsolution.persistence.emap</module>
+				<module>../at.bestsolution.persistence.emap.ui</module>
+				<module>../at.bestsolution.persistence.tooling.feature</module>
+				<module>../at.bestsolution.persistence.tooling.updatesite</module>
+			</modules>
+		</profile>
 		<profile>
 			<id>with-oracle</id>
 			<modules>
