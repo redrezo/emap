@@ -19,7 +19,7 @@ Require-Bundle: at.bestsolution.persistence;bundle-version="1.0.0",
  at.bestsolution.persistence.firebird;bundle-version="1.0.0",
  org.slf4j.api;bundle-version="1.7.2"
 Import-Package: org.osgi.framework
-Service-Component: OSGI-INF/firebird.xml, OSGI-INF/environmentConfig.xml
+Service-Component: OSGI-INF/environmentConfig.xml
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: libs/dbunit-2.5.3.jar,
  .

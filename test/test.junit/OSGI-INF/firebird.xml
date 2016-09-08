@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="test.junit.FirebirdConfig">
-   <implementation class="test.junit.FirebirdConfig"/>
-   <service>
-      <provide interface="at.bestsolution.persistence.java.JDBCConfiguration"/>
-   </service>
-</scr:component> 
